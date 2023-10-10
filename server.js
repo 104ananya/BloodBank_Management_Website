@@ -6,7 +6,7 @@ const cors = require("cors"); // for cross origin requests
 const connectDB = require("./config/db");
 
 //.env config
-// dotenv.config({ path: './config/config.env' })
+// // dotenv.config({ path: './config/config.env' })
 dotenv.config();
 
 // mongoDb connection
@@ -18,16 +18,17 @@ const app = express();
 // middleware
 app.use(express.json());
 app.use(cors());
-// app.use(morgan("dev"));
+app.use(morgan("dev"));
 
 // routes
 //test route
-
+/*
 // app.get("/", (req, res) => {
 //   res.status(200).json({
 //     message: "Welcome to Blood Bank App",
 //   }); 
 // });
+*/
 
 app.use("/api/v1/test", require("./routes/testRoutes"));
 app.use('/api/v1/auth',require('./routes/authRoutes'));

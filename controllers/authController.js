@@ -63,7 +63,7 @@ const loginController = async (req, res) => {
 
     // if user is present ---- then COMPARE password
     const comparePassword = await bcrypt.compare(req.body.password, user.password);
-    // console.log(comparePassword);
+    // // console.log(comparePassword);
 
     // if password don't match
     if (!comparePassword) {
@@ -93,4 +93,15 @@ const loginController = async (req, res) => {
   }
 };
 
-module.exports = { registerController, loginController };
+
+// -----------------------------------XXXXXXXXXXXXXXXXXXXXXXX-----------------------------------------------
+
+// GET CURRENT USER
+const currentUserController = async () => {
+
+}
+
+
+
+
+module.exports = { registerController, loginController, currentUserController };

@@ -11,5 +11,19 @@
     ```bcrypt.hash(req.body.password, salt)``` -- now hashing the password
 
     ```req.body.password = hashedPassword```   --- replacing the original password with hashed password
-8. ```comparePassword = bcrypt.compare(req.body.password, user.password)``` --- first parameter is from entered field and second parameter is from the database 
+8. ```comparePassword = bcrypt.compare(req.body.password, user.password)``` --- first parameter is from entered field and second parameter is from the database
+9. Middleware - to protect our routes ----- next function is middleware
+10. 
+~~~
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+~~~
+Middleware
+~~~
+    const token = req.headers["authorization"].split(" ")[1];
+    JWT.verify(token, process.env.JWT_SECRET, (err, decode) => {})
+~~~ 
+11. If we don't get Token and if it doesn't get successfully verified Next will not be called.
+12. 
 
