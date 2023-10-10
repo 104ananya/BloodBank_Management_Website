@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
       } 
       else {
         // if no error
-        req.body.userId = decode.id; // inside decode we have user
+        req.body.userId = decode.userId; // inside decode we have user
 
         // if we don't get Token and if it doesn't get successfully verified Next will not be called
         next();

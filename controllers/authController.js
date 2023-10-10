@@ -62,7 +62,10 @@ const loginController = async (req, res) => {
     }
 
     // if user is present ---- then COMPARE password
-    const comparePassword = await bcrypt.compare(req.body.password, user.password);
+    const comparePassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
     // // console.log(comparePassword);
 
     // if password don't match
@@ -93,15 +96,27 @@ const loginController = async (req, res) => {
   }
 };
 
-
 // -----------------------------------XXXXXXXXXXXXXXXXXXXXXXX-----------------------------------------------
 
 // GET CURRENT USER
-const currentUserController = async () => {
+const currentUserController = async (req, res) => {
+  try {
+    const user = await userModel.findOne({ _id: req.body.userId });
 
-}
-
-
-
+    return res.status(200).send({
+      success: true,
+      message: "User Fetched Successfully",
+      user,
+    });
+  } catch (error) {
+    
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Unable to get current User",
+      error,
+    });
+  }
+};
 
 module.exports = { registerController, loginController, currentUserController };
