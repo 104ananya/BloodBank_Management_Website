@@ -26,4 +26,8 @@ Middleware
 ~~~ 
 11. If we don't get Token and if it doesn't get successfully verified Next will not be called.
 12. 
+~~~
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+~~~
 
